@@ -1,9 +1,0 @@
-<h1>Hello world!</h1>
-
-{{#if session.isAuthenticated}}
-  <p><a {{action 'invalidateSession'}} >Logout</a></p>
-{{else}}
-  <p><a {{action 'sessionRequiresAuthentication'}} >Login</a></p>
-{{/if}}
-
-{{outlet}}
