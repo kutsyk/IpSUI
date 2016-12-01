@@ -1,0 +1,19 @@
+{
+  "name": "ipsui",
+  "version": "1.0.0",
+  "description": "UI for ipstats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kutsyk/IpSUI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kutsyk/IpSUI/issues"
+  },
+  "homepage": "https://github.com/kutsyk/IpSUI#readme"
+}
