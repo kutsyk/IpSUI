@@ -20,6 +20,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+      'font-src': "'self'",
+      'connect-src': "'self'",
+      'img-src': "'self'",
+      'report-uri':"'localhost'",
+      'style-src': "'self' 'unsafe-inline'",
+      'frame-src': "'none'"
     }
   };
 
@@ -45,6 +55,16 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
+  ENV['torii'] = {
+    providers: {
+      'facebook-oauth2': {
+        apiKey: '410282359085824',
+        redirectUri: 'http://localhost:4200'
+      }
+    }
+  };
+
 
   return ENV;
 };
