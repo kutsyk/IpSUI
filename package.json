@@ -27,6 +27,7 @@
     "passport-local" : "~0.1.6",
     "passport-facebook" : "~1.0.2",
     "passport-twitter" : "~1.0.2",
+    "passport-github" : "~1.1.0",
     "passport-google-oauth" : "~0.1.5",
     "connect-flash" : "~0.1.1",
     "bcrypt-nodejs" : "latest",
