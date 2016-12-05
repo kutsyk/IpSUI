@@ -1,2 +1,9 @@
-# front
-Don't use thing that you dan't need
+db.createUser(
+  {
+    user: "admin",
+    pwd: "12345",
+    roles: [
+       { role: "dbAdmin", db: "ipstats" },
+    ]
+  }
+)

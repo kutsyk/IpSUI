@@ -53,7 +53,7 @@ module.exports = function (app, passport) {
             failureRedirect : '/'
         }));
 
-    app.get('/auth/github', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/github', passport.authenticate('github', { scope : ['profile', 'email'] }));
 
     // the callback after google has authenticated the user
     app.get('/auth/github/callback',
