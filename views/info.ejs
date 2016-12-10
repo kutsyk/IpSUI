@@ -1,24 +1,47 @@
-<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <html>
 <head>
     <title> <%= ip %></title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        a { color:#000; }
+    </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/show/31.131.19.12">31.131.19.12</a>
-        <a href="/" class="btn btn-default"><span class="fa fa-user"></span>Main</a>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    <div class="navbar" style="padding-top: 0.5%;">
+        <div class="col-md-6">
+            <a href="/">Main Logo</a>&nbsp;
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="/profile" class="text-right"><span class="fa fa-user"></span> Profile</a>
+            <a href="/logout" class="text-right">Logout</a>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <div class="row">
+            <a href="#inetnum" data-toggle="collapse" aria-expanded="false"
+               aria-controls="inetnum">
+                Inetnum info&nbsp; <span class="glyphicon glyphicon-collapse-down"></span>
+            </a>
+            <div class="collapse" id="inetnum">
+                <div class="row">
+                    Link: <a href="<%= inetnum.link.href %>"><%= inetnum.link.href %></a>
+                    <%= inetnum %>
+                </div>
+                <div class="row"></div>
+            </div>
+        </div>
     </div>
 
-    <div class="row">
-        <%= info %>
-    </div>
 </div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

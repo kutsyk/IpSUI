@@ -1,0 +1,138 @@
+{
+  "type": "inetnum",
+  "link": {
+    "type": "locator",
+    "href": "http://rest.db.ripe.net/ripe/inetnum/31.131.16.0 - 31.131.31.255"
+  },
+  "source": {
+    "id": "ripe"
+  },
+  "primary-key": {
+    "attribute": [
+      {
+        "name": "inetnum",
+        "value": "31.131.16.0 - 31.131.31.255"
+      }
+    ]
+  },
+  "attributes": {
+    "attribute": [
+      {
+        "name": "inetnum",
+        "value": "31.131.16.0 - 31.131.31.255"
+      },
+      {
+        "name": "netname",
+        "value": "VPS-UA"
+      },
+      {
+        "name": "country",
+        "value": "UA"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/organisation/ORG-PSMV2-RIPE"
+        },
+        "name": "org",
+        "value": "ORG-PSMV2-RIPE",
+        "referenced-type": "organisation"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/person/SK5844-RIPE"
+        },
+        "name": "admin-c",
+        "value": "SK5844-RIPE",
+        "referenced-type": "person"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/person/SK5844-RIPE"
+        },
+        "name": "tech-c",
+        "value": "SK5844-RIPE",
+        "referenced-type": "person"
+      },
+      {
+        "name": "status",
+        "value": "ASSIGNED PI"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/mntner/RIPE-NCC-END-MNT"
+        },
+        "name": "mnt-by",
+        "value": "RIPE-NCC-END-MNT",
+        "referenced-type": "mntner"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+        },
+        "name": "mnt-by",
+        "value": "VPSUA-MNT",
+        "referenced-type": "mntner"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+        },
+        "name": "mnt-routes",
+        "value": "VPSUA-MNT",
+        "referenced-type": "mntner"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/mntner/MNT-SOLIDHOST"
+        },
+        "name": "mnt-routes",
+        "value": "MNT-SOLIDHOST",
+        "referenced-type": "mntner"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+        },
+        "name": "mnt-domains",
+        "value": "VPSUA-MNT",
+        "referenced-type": "mntner"
+      },
+      {
+        "name": "created",
+        "value": "2011-05-27T08:55:20Z"
+      },
+      {
+        "name": "last-modified",
+        "value": "2016-04-14T08:56:18Z"
+      },
+      {
+        "name": "source",
+        "value": "RIPE"
+      },
+      {
+        "link": {
+          "type": "locator",
+          "href": "http://rest.db.ripe.net/ripe/organisation/ORG-NL64-RIPE"
+        },
+        "name": "sponsoring-org",
+        "value": "ORG-NL64-RIPE",
+        "referenced-type": "organisation"
+      }
+    ]
+  },
+  "tags": {
+    "tag": [
+      {
+        "id": "RIPE-REGISTRY-RESOURCE"
+      }
+    ]
+  }
+}
