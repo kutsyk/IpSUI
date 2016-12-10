@@ -1,3 +1,5 @@
+var request = require('request');
+
 module.exports = function (app, passport) {
 
     app.get('/', function (req, res) {
@@ -44,22 +46,22 @@ module.exports = function (app, passport) {
         })
     );
 
-    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect: '/profile',
+            failureRedirect: '/'
         }));
 
-    app.get('/auth/github', passport.authenticate('github', { scope : ['profile', 'email'] }));
+    app.get('/auth/github', passport.authenticate('github', {scope: ['profile', 'email']}));
 
     // the callback after google has authenticated the user
     app.get('/auth/github/callback',
         passport.authenticate('github', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect: '/profile',
+            failureRedirect: '/'
         }));
 
 
@@ -85,6 +87,26 @@ module.exports = function (app, passport) {
     app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+    app.get('/show/:ip', function (req, res, next) {
+        var options = {
+            url: 'https://rest.db.ripe.net/search?source=ripe&query-string=31.131.19.12',
+            headers: {
+                'Accept': 'application/json'
+            }
+        };
+        request.get(options, function (err, response, body) {
+            if (!err && response.statusCode == 200) {
+                var infoBody = JSON.parse(body);
+                res.render('info.ejs',
+                    {
+                        //rest.db.ripe.net/search?source=ripe&query-string=31.131.19.12
+                        ip: req.params.ip,
+                        info: body
+                    });
+            }
+        });
     });
 };
 

@@ -1,9 +1,6 @@
 <component name="libraryTable">
   <library name="bower_components IpSUI" type="javaScript">
-    <CLASSES>
-      <root url="file://$PROJECT_DIR$/bower_components" />
-      <root url="file://$PROJECT_DIR$/bower_components" />
-    </CLASSES>
+    <CLASSES />
     <SOURCES />
   </library>
 </component>

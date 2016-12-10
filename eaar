@@ -1,0 +1,71 @@
+[33mcommit 7c715700e66e8ac102fbdb130292451505298b81[m
+Author: Vasya Kutsyk <vasya.kutsyk@atola.com>
+Date:   Fri Dec 2 17:46:57 2016 +0200
+
+    base github addeD
+
+[33mcommit dcdec71a9ae657f919b51a73209da77aab081e5d[m
+Author: Vasya Kutsyk <vasya.kutsyk@atola.com>
+Date:   Fri Dec 2 17:26:02 2016 +0200
+
+    github added
+
+[33mcommit 15932cc7dfe1df4cff4311edef129ac66b5e5676[m
+Author: Vasya Kutsyk <vasya.kutsyk@atola.com>
+Date:   Fri Dec 2 16:43:15 2016 +0200
+
+    facebook and local users connection added
+
+[33mcommit 2df989d9554eb5c1409928c78a5d932e58e8ccfb[m
+Author: Vasya Kutsyk <vasya.kutsyk@atola.com>
+Date:   Fri Dec 2 14:27:08 2016 +0200
+
+    main pages added
+
+[33mcommit 2de1e97a233973a641f828aadb13fb055280b4f7[m
+Author: Vasya Kutsyk <vasya.kutsyk@atola.com>
+Date:   Fri Dec 2 11:02:11 2016 +0200
+
+    project cleared
+
+[33mcommit ce721b1743bade0786152f79ad04659e73f5c250[m
+Author: kutsyk <vasya.kutsyk@gmail.com>
+Date:   Fri Dec 2 00:58:40 2016 +0200
+
+    init 2
+
+[33mcommit 84aad8cb3b35ce15d78c1e1d0a70e382895eb50f[m
+Author: kutsyk <vasya.kutsyk@gmail.com>
+Date:   Fri Dec 2 00:56:55 2016 +0200
+
+    thtrow shit away
+
+[33mcommit 368efe5ce17eddf5f1af452246d0c2dd4e996314[m
+Author: Vasya Kutsyk <vasya.kutsyk@atola.com>
+Date:   Thu Dec 1 09:26:36 2016 +0200
+
+    added login(not working)
+
+[33mcommit 639df58e88fbed52818c782d0737da978388df37[m
+Author: Vasya Kutsyk <vasya.kutsyk@atola.com>
+Date:   Wed Nov 30 18:28:48 2016 +0200
+
+    base login added
+
+[33mcommit b789141432bf34643feebcf7f1193b91fef39f83[m
+Author: kutsyk <vasya.kutsyk@gmail.com>
+Date:   Tue Nov 29 23:59:29 2016 +0200
+
+    idea project settings changed
+
+[33mcommit b0f49063e26daf343a63a08d46d08bc66a6a3c2c[m
+Author: kutsyk <vasya.kutsyk@gmail.com>
+Date:   Tue Nov 29 23:56:00 2016 +0200
+
+    init
+
+[33mcommit a6a65ddf2d6e947b56cd8a191ab16c1b146a364b[m
+Author: Tomster <tomster@emberjs.com>
+Date:   Tue Nov 29 23:24:09 2016 +0200
+
+    Initial Commit from Ember CLI v2.10.0
