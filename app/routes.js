@@ -105,6 +105,7 @@ module.exports = function (app, passport) {
                         ip: req.params.ip,
                         inetnum: infoBody.objects["object"][0],
                         organization: infoBody.objects["object"][1],
+                        person: infoBody.objects["object"][2],
                         stringBody: body
                     });
             }

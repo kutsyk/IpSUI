@@ -25,28 +25,34 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <span role="button" data-toggle="collapse" data-parent="#accordion" href="#inetnum"
+                            <span role="button" data-toggle="collapse" href="#person"
                                   aria-expanded="true" aria-controls="collapseOne">
-                                <span class="glyphicon glyphicon-collapse-down"></span> Inetnum: <a
-                                        href="<%= inetnum.link.href %>"><%= inetnum.link.href %></a>
+                                <span class="glyphicon glyphicon-collapse-down"></span>
+                                Person:
+                                <a href="<%= person.link.href %>"><%= person.attributes.attribute[0].value %></a>
                             </span>
                         </h4>
                     </div>
-                    <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" id="inetnum">
+                    <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" id="person">
                         <div class="panel-body">
-                            <% for(var i = 0; i < inetnum.attributes.attribute.length; i++) { %>
-                            <div class="row">
-                                <%= inetnum.attributes.attribute[i].name.toUpperCase() %>
-                                :
-                                <% if (inetnum.attributes.attribute[i].link != null) { %>
-                                    <a href="<%= inetnum.attributes.attribute[i].link.href %>">
-                                        <%= inetnum.attributes.attribute[i].value %>
-                                    </a>
-                                <% } else { %>
-                                    <%= inetnum.attributes.attribute[i].value %>
+                            <table class="table table-hover">
+                                <% for(var i = 0; i < person.attributes.attribute.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= person.attributes.attribute[i].name.toUpperCase() %>
+                                    </td>
+                                    <td>
+                                        <% if (person.attributes.attribute[i].link != null) { %>
+                                        <a href="<%= person.attributes.attribute[i].link.href %>">
+                                            <%= person.attributes.attribute[i].value %>
+                                        </a>
+                                        <% } else { %>
+                                        <%= person.attributes.attribute[i].value %>
+                                        <% } %>
+                                    </td>
+                                </tr>
                                 <% } %>
-                            </div>
-                            <% } %>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -57,28 +63,70 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <span role="button" data-toggle="collapse" data-parent="#accordion" href="#inetnum"
+                            <span role="button" data-toggle="collapse" href="#inetnum"
+                                  aria-expanded="true" aria-controls="collapseOne">
+                                <span class="glyphicon glyphicon-collapse-down"></span> Inetnum: <a
+                                        href="<%= inetnum.link.href %>"><%= inetnum.link.href %></a>
+                            </span>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" id="inetnum">
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <% for(var i = 0; i < inetnum.attributes.attribute.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= inetnum.attributes.attribute[i].name.toUpperCase() %>
+                                    </td>
+                                    <td>
+                                        <% if (inetnum.attributes.attribute[i].link != null) { %>
+                                        <a href="<%= inetnum.attributes.attribute[i].link.href %>">
+                                            <%= inetnum.attributes.attribute[i].value %>
+                                        </a>
+                                        <% } else { %>
+                                        <%= inetnum.attributes.attribute[i].value %>
+                                        <% } %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <span role="button" data-toggle="collapse" href="#organization"
                                   aria-expanded="true" aria-controls="collapseOne">
                                 <span class="glyphicon glyphicon-collapse-down"></span> Organization: <a
                                         href="<%= organization.link.href %>"><%= organization.link.href %></a>
                             </span>
                         </h4>
                     </div>
-                    <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" id="inetnum">
+                    <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" id="organization">
                         <div class="panel-body">
-                            <% for(var i = 0; i < organization.attributes.attribute.length; i++) { %>
-                            <div class="row">
-                                <%= organization.attributes.attribute[i].name.toUpperCase() %>
-                                :
-                                <% if (organization.attributes.attribute[i].link != null) { %>
-                                <a href="<%= organization.attributes.attribute[i].link.href %>">
-                                    <%= organization.attributes.attribute[i].value %>
-                                </a>
-                                <% } else { %>
-                                <%= organization.attributes.attribute[i].value %>
+                            <table class="table table-hover">
+                                <% for(var i = 0; i < organization.attributes.attribute.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= organization.attributes.attribute[i].name.toUpperCase() %>
+                                    </td>
+                                    <td>
+                                        <% if (organization.attributes.attribute[i].link != null) { %>
+                                        <a href="<%= organization.attributes.attribute[i].link.href %>">
+                                            <%= organization.attributes.attribute[i].value %>
+                                        </a>
+                                        <% } else { %>
+                                        <%= organization.attributes.attribute[i].value %>
+                                        <% } %>
+                                    </td>
+                                </tr>
                                 <% } %>
-                            </div>
-                            <% } %>
+                            </table>
                         </div>
                     </div>
                 </div>
