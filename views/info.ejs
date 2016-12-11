@@ -63,6 +63,44 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
+                            <span role="button" data-toggle="collapse" href="#organization"
+                                  aria-expanded="true" aria-controls="collapseOne">
+                                <span class="glyphicon glyphicon-collapse-down"></span> Organization: <a
+                                        href="<%= organization.link.href %>"><%= organization.link.href %></a>
+                            </span>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" id="organization">
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <% for(var i = 0; i < organization.attributes.attribute.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= organization.attributes.attribute[i].name.toUpperCase() %>
+                                    </td>
+                                    <td>
+                                        <% if (organization.attributes.attribute[i].link != null) { %>
+                                        <a href="<%= organization.attributes.attribute[i].link.href %>">
+                                            <%= organization.attributes.attribute[i].value %>
+                                        </a>
+                                        <% } else { %>
+                                        <%= organization.attributes.attribute[i].value %>
+                                        <% } %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
                             <span role="button" data-toggle="collapse" href="#inetnum"
                                   aria-expanded="true" aria-controls="collapseOne">
                                 <span class="glyphicon glyphicon-collapse-down"></span> Inetnum: <a
@@ -95,33 +133,34 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <span role="button" data-toggle="collapse" href="#organization"
+                            <span role="button" data-toggle="collapse" href="#route"
                                   aria-expanded="true" aria-controls="collapseOne">
-                                <span class="glyphicon glyphicon-collapse-down"></span> Organization: <a
-                                        href="<%= organization.link.href %>"><%= organization.link.href %></a>
+                                <span class="glyphicon glyphicon-collapse-down"></span> Route: <a
+                                        href="<%= route.link.href %>"><%= route.link.href %></a>
                             </span>
                         </h4>
                     </div>
-                    <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" id="organization">
+                    <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" id="route">
                         <div class="panel-body">
                             <table class="table table-hover">
-                                <% for(var i = 0; i < organization.attributes.attribute.length; i++) { %>
+                                <% for(var i = 0; i < route.attributes.attribute.length; i++) { %>
                                 <tr>
                                     <td>
-                                        <%= organization.attributes.attribute[i].name.toUpperCase() %>
+                                        <%= route.attributes.attribute[i].name.toUpperCase() %>
                                     </td>
                                     <td>
-                                        <% if (organization.attributes.attribute[i].link != null) { %>
-                                        <a href="<%= organization.attributes.attribute[i].link.href %>">
-                                            <%= organization.attributes.attribute[i].value %>
+                                        <% if (route.attributes.attribute[i].link != null) { %>
+                                        <a href="<%= route.attributes.attribute[i].link.href %>">
+                                            <%= route.attributes.attribute[i].value %>
                                         </a>
                                         <% } else { %>
-                                        <%= organization.attributes.attribute[i].value %>
+                                        <%= route.attributes.attribute[i].value %>
                                         <% } %>
                                     </td>
                                 </tr>
