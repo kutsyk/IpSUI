@@ -5,9 +5,6 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        a { color:#000; }
-    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -22,18 +19,42 @@
             <a href="/logout" class="text-right">Logout</a>
         </div>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="row">
-            <a href="#inetnum" data-toggle="collapse" aria-expanded="false"
-               aria-controls="inetnum">
-                Inetnum info&nbsp; <span class="glyphicon glyphicon-collapse-down"></span>
-            </a>
-            <div class="collapse" id="inetnum">
-                <div class="row">
-                    Link: <a href="<%= inetnum.link.href %>"><%= inetnum.link.href %></a>
-                    <%= inetnum %>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <span role="button" data-toggle="collapse" data-parent="#accordion" href="#inetnum"
+                                  aria-expanded="true" aria-controls="collapseOne">
+                                <span class="glyphicon glyphicon-collapse-down"></span> Inetnum info: <a
+                                        href="<%= inetnum.link.href %>"><%= inetnum.link.href %></a>
+                            </span>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" id="inetnum">
+                        <div class="panel-body">
+                            <% for(var i = 0; i < inetnum.attributes.attribute.length; i++) { %>
+                            <div class="row">
+                                <%= inetnum.attributes.attribute[i].name.toUpperCase() %>
+                                :
+                                <% if (inetnum.attributes.attribute[i].link != null) { %>
+                                <a href="<%= inetnum.attributes.attribute[i].link.href %>">
+                                    <%= inetnum.attributes.attribute[i].value %>
+                                </a>
+                                <% } else { %>
+                                <%= inetnum.attributes.attribute[i].value %>
+                                <% } %>
+                            </div>
+
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
+                <div class="row">
+                    Source: <%= inetnum.source.id %>
+                </div>
+                <div class="row"><%= stringBody %></div>
                 <div class="row"></div>
             </div>
         </div>
