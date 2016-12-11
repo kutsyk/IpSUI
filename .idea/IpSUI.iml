@@ -16,7 +16,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="node_modules IpSUI" level="project" />
-    <orderEntry type="library" name="bower_components IpSUI" level="project" />
   </component>
 </module>
