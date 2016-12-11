@@ -27,35 +27,61 @@
                         <h4 class="panel-title">
                             <span role="button" data-toggle="collapse" data-parent="#accordion" href="#inetnum"
                                   aria-expanded="true" aria-controls="collapseOne">
-                                <span class="glyphicon glyphicon-collapse-down"></span> Inetnum info: <a
+                                <span class="glyphicon glyphicon-collapse-down"></span> Inetnum: <a
                                         href="<%= inetnum.link.href %>"><%= inetnum.link.href %></a>
                             </span>
                         </h4>
                     </div>
-                    <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" id="inetnum">
+                    <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" id="inetnum">
                         <div class="panel-body">
                             <% for(var i = 0; i < inetnum.attributes.attribute.length; i++) { %>
                             <div class="row">
                                 <%= inetnum.attributes.attribute[i].name.toUpperCase() %>
                                 :
                                 <% if (inetnum.attributes.attribute[i].link != null) { %>
-                                <a href="<%= inetnum.attributes.attribute[i].link.href %>">
-                                    <%= inetnum.attributes.attribute[i].value %>
-                                </a>
+                                    <a href="<%= inetnum.attributes.attribute[i].link.href %>">
+                                        <%= inetnum.attributes.attribute[i].value %>
+                                    </a>
                                 <% } else { %>
-                                <%= inetnum.attributes.attribute[i].value %>
+                                    <%= inetnum.attributes.attribute[i].value %>
                                 <% } %>
                             </div>
-
                             <% } %>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    Source: <%= inetnum.source.id %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <span role="button" data-toggle="collapse" data-parent="#accordion" href="#inetnum"
+                                  aria-expanded="true" aria-controls="collapseOne">
+                                <span class="glyphicon glyphicon-collapse-down"></span> Organization: <a
+                                        href="<%= organization.link.href %>"><%= organization.link.href %></a>
+                            </span>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" id="inetnum">
+                        <div class="panel-body">
+                            <% for(var i = 0; i < organization.attributes.attribute.length; i++) { %>
+                            <div class="row">
+                                <%= organization.attributes.attribute[i].name.toUpperCase() %>
+                                :
+                                <% if (organization.attributes.attribute[i].link != null) { %>
+                                <a href="<%= organization.attributes.attribute[i].link.href %>">
+                                    <%= organization.attributes.attribute[i].value %>
+                                </a>
+                                <% } else { %>
+                                <%= organization.attributes.attribute[i].value %>
+                                <% } %>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
-                <div class="row"><%= stringBody %></div>
-                <div class="row"></div>
             </div>
         </div>
     </div>

@@ -104,6 +104,7 @@ module.exports = function (app, passport) {
                         //rest.db.ripe.net/search?source=ripe&query-string=31.131.19.12
                         ip: req.params.ip,
                         inetnum: infoBody.objects["object"][0],
+                        organization: infoBody.objects["object"][1],
                         stringBody: body
                     });
             }

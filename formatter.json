@@ -1,138 +1,390 @@
 {
-  "type": "inetnum",
-  "link": {
-    "type": "locator",
-    "href": "http://rest.db.ripe.net/ripe/inetnum/31.131.16.0 - 31.131.31.255"
+  "service":{
+    "name":"search"
   },
-  "source": {
-    "id": "ripe"
+  "parameters":{
+    "inverse-lookup":{
+
+    },
+    "type-filters":{
+
+    },
+    "flags":{
+
+    },
+    "query-strings":{
+      "query-string":[
+        {
+          "value":"31.131.19.12"
+        }
+      ]
+    },
+    "sources":{
+      "source":[
+        {
+          "id":"ripe"
+        }
+      ]
+    }
   },
-  "primary-key": {
-    "attribute": [
+  "objects":{
+    "object":[
       {
-        "name": "inetnum",
-        "value": "31.131.16.0 - 31.131.31.255"
+        "type":"inetnum",
+        "link":{
+          "type":"locator",
+          "href":"http://rest.db.ripe.net/ripe/inetnum/31.131.16.0 - 31.131.31.255"
+        },
+        "source":{
+          "id":"ripe"
+        },
+        "primary-key":{
+          "attribute":[
+            {
+              "name":"inetnum",
+              "value":"31.131.16.0 - 31.131.31.255"
+            }
+          ]
+        },
+        "attributes":{
+          "attribute":[
+            {
+              "name":"inetnum",
+              "value":"31.131.16.0 - 31.131.31.255"
+            },
+            {
+              "name":"netname",
+              "value":"VPS-UA"
+            },
+            {
+              "name":"country",
+              "value":"UA"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/organisation/ORG-PSMV2-RIPE"
+              },
+              "name":"org",
+              "value":"ORG-PSMV2-RIPE",
+              "referenced-type":"organisation"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/person/SK5844-RIPE"
+              },
+              "name":"admin-c",
+              "value":"SK5844-RIPE",
+              "referenced-type":"person"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/person/SK5844-RIPE"
+              },
+              "name":"tech-c",
+              "value":"SK5844-RIPE",
+              "referenced-type":"person"
+            },
+            {
+              "name":"status",
+              "value":"ASSIGNED PI"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/RIPE-NCC-END-MNT"
+              },
+              "name":"mnt-by",
+              "value":"RIPE-NCC-END-MNT",
+              "referenced-type":"mntner"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+              },
+              "name":"mnt-by",
+              "value":"VPSUA-MNT",
+              "referenced-type":"mntner"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+              },
+              "name":"mnt-routes",
+              "value":"VPSUA-MNT",
+              "referenced-type":"mntner"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/MNT-SOLIDHOST"
+              },
+              "name":"mnt-routes",
+              "value":"MNT-SOLIDHOST",
+              "referenced-type":"mntner"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+              },
+              "name":"mnt-domains",
+              "value":"VPSUA-MNT",
+              "referenced-type":"mntner"
+            },
+            {
+              "name":"created",
+              "value":"2011-05-27T08:55:20Z"
+            },
+            {
+              "name":"last-modified",
+              "value":"2016-04-14T08:56:18Z"
+            },
+            {
+              "name":"source",
+              "value":"RIPE"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/organisation/ORG-NL64-RIPE"
+              },
+              "name":"sponsoring-org",
+              "value":"ORG-NL64-RIPE",
+              "referenced-type":"organisation"
+            }
+          ]
+        },
+        "tags":{
+          "tag":[
+            {
+              "id":"RIPE-REGISTRY-RESOURCE"
+            }
+          ]
+        }
+      },
+      {
+        "type":"organisation",
+        "link":{
+          "type":"locator",
+          "href":"http://rest.db.ripe.net/ripe/organisation/ORG-PSMV2-RIPE"
+        },
+        "source":{
+          "id":"ripe"
+        },
+        "primary-key":{
+          "attribute":[
+            {
+              "name":"organisation",
+              "value":"ORG-PSMV2-RIPE"
+            }
+          ]
+        },
+        "attributes":{
+          "attribute":[
+            {
+              "name":"organisation",
+              "value":"ORG-PSMV2-RIPE"
+            },
+            {
+              "name":"org-name",
+              "value":"PE Skurykhin Mukola Volodumurovuch"
+            },
+            {
+              "name":"org-type",
+              "value":"other"
+            },
+            {
+              "name":"address",
+              "value":"61015, Ukraine, Kharkiv, Donbasivskiy alley, 17, of. 59"
+            },
+            {
+              "name":"phone",
+              "value":"+38(057)720-9518"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/role/AR22074-RIPE"
+              },
+              "name":"abuse-c",
+              "value":"AR22074-RIPE",
+              "referenced-type":"role"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/person/SK5844-RIPE"
+              },
+              "name":"admin-c",
+              "value":"SK5844-RIPE",
+              "referenced-type":"person"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+              },
+              "name":"mnt-ref",
+              "value":"VPSUA-MNT",
+              "referenced-type":"mntner"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+              },
+              "name":"mnt-by",
+              "value":"VPSUA-MNT",
+              "referenced-type":"mntner"
+            },
+            {
+              "name":"created",
+              "value":"2011-04-28T00:33:51Z"
+            },
+            {
+              "name":"last-modified",
+              "value":"2014-08-14T13:49:57Z"
+            },
+            {
+              "name":"source",
+              "value":"RIPE",
+              "comment":"Filtered"
+            }
+          ]
+        }
+      },
+      {
+        "type":"person",
+        "link":{
+          "type":"locator",
+          "href":"http://rest.db.ripe.net/ripe/person/SK5844-RIPE"
+        },
+        "source":{
+          "id":"ripe"
+        },
+        "primary-key":{
+          "attribute":[
+            {
+              "name":"nic-hdl",
+              "value":"SK5844-RIPE"
+            }
+          ]
+        },
+        "attributes":{
+          "attribute":[
+            {
+              "name":"person",
+              "value":"Sergey Skurykhin"
+            },
+            {
+              "name":"address",
+              "value":"59, 17, Donbassovskaya str, Kharkov, Ukraine, 61015"
+            },
+            {
+              "name":"phone",
+              "value":"+38 050 3230237"
+            },
+            {
+              "name":"nic-hdl",
+              "value":"SK5844-RIPE"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/BIGLINE-MNT"
+              },
+              "name":"mnt-by",
+              "value":"BIGLINE-MNT",
+              "referenced-type":"mntner"
+            },
+            {
+              "name":"created",
+              "value":"2011-04-20T14:59:20Z"
+            },
+            {
+              "name":"last-modified",
+              "value":"2012-03-01T14:09:45Z"
+            },
+            {
+              "name":"source",
+              "value":"RIPE"
+            }
+          ]
+        }
+      },
+      {
+        "type":"route",
+        "link":{
+          "type":"locator",
+          "href":"http://rest.db.ripe.net/ripe/route/31.131.19.0/24AS56851"
+        },
+        "source":{
+          "id":"ripe"
+        },
+        "primary-key":{
+          "attribute":[
+            {
+              "name":"route",
+              "value":"31.131.19.0/24"
+            },
+            {
+              "name":"origin",
+              "value":"AS56851"
+            }
+          ]
+        },
+        "attributes":{
+          "attribute":[
+            {
+              "name":"route",
+              "value":"31.131.19.0/24"
+            },
+            {
+              "name":"descr",
+              "value":"PE Skurykhin Mukola Volodumurovuch"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/aut-num/AS56851"
+              },
+              "name":"origin",
+              "value":"AS56851",
+              "referenced-type":"aut-num"
+            },
+            {
+              "link":{
+                "type":"locator",
+                "href":"http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
+              },
+              "name":"mnt-by",
+              "value":"VPSUA-MNT",
+              "referenced-type":"mntner"
+            },
+            {
+              "name":"created",
+              "value":"2014-12-31T17:40:22Z"
+            },
+            {
+              "name":"last-modified",
+              "value":"2014-12-31T17:40:22Z"
+            },
+            {
+              "name":"source",
+              "value":"RIPE"
+            }
+          ]
+        }
       }
     ]
   },
-  "attributes": {
-    "attribute": [
-      {
-        "name": "inetnum",
-        "value": "31.131.16.0 - 31.131.31.255"
-      },
-      {
-        "name": "netname",
-        "value": "VPS-UA"
-      },
-      {
-        "name": "country",
-        "value": "UA"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/organisation/ORG-PSMV2-RIPE"
-        },
-        "name": "org",
-        "value": "ORG-PSMV2-RIPE",
-        "referenced-type": "organisation"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/person/SK5844-RIPE"
-        },
-        "name": "admin-c",
-        "value": "SK5844-RIPE",
-        "referenced-type": "person"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/person/SK5844-RIPE"
-        },
-        "name": "tech-c",
-        "value": "SK5844-RIPE",
-        "referenced-type": "person"
-      },
-      {
-        "name": "status",
-        "value": "ASSIGNED PI"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/mntner/RIPE-NCC-END-MNT"
-        },
-        "name": "mnt-by",
-        "value": "RIPE-NCC-END-MNT",
-        "referenced-type": "mntner"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
-        },
-        "name": "mnt-by",
-        "value": "VPSUA-MNT",
-        "referenced-type": "mntner"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
-        },
-        "name": "mnt-routes",
-        "value": "VPSUA-MNT",
-        "referenced-type": "mntner"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/mntner/MNT-SOLIDHOST"
-        },
-        "name": "mnt-routes",
-        "value": "MNT-SOLIDHOST",
-        "referenced-type": "mntner"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/mntner/VPSUA-MNT"
-        },
-        "name": "mnt-domains",
-        "value": "VPSUA-MNT",
-        "referenced-type": "mntner"
-      },
-      {
-        "name": "created",
-        "value": "2011-05-27T08:55:20Z"
-      },
-      {
-        "name": "last-modified",
-        "value": "2016-04-14T08:56:18Z"
-      },
-      {
-        "name": "source",
-        "value": "RIPE"
-      },
-      {
-        "link": {
-          "type": "locator",
-          "href": "http://rest.db.ripe.net/ripe/organisation/ORG-NL64-RIPE"
-        },
-        "name": "sponsoring-org",
-        "value": "ORG-NL64-RIPE",
-        "referenced-type": "organisation"
-      }
-    ]
-  },
-  "tags": {
-    "tag": [
-      {
-        "id": "RIPE-REGISTRY-RESOURCE"
-      }
-    ]
+  "terms-and-conditions":{
+    "type":"locator",
+    "href":"http://www.ripe.net/db/support/db-terms-conditions.pdf"
   }
 }
