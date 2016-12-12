@@ -1,4 +1,5 @@
 var request = require('request');
+var MongoClient = require('mongodb').MongoClient;
 
 module.exports = function (app, passport) {
 
@@ -34,6 +35,24 @@ module.exports = function (app, passport) {
         res.render('profile.ejs', {
             user: req.user // get the user out of session and pass to template
         });
+    });
+
+    app.get('/search', function (req, res) {
+        // Connect to the db
+        MongoClient.connect("mongodb://admin:12345@localhost:27017/ipstats", function(err, db) {
+            if(err) {
+                return console.dir(err);
+            }
+
+            db.collection('ips_dev', function(err, collection) {
+                collection.count(function(err, count) {
+                res.render('search.ejs', {
+                    count: count
+                    });
+                });
+            });
+        });
+
     });
 
     app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
