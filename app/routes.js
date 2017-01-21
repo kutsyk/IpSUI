@@ -1,5 +1,5 @@
 var request = require('request');
-var MongoClient = require('mongodb').MongoClient;
+var mongodb = require('./../config/database.js');
 
 module.exports = function (app, passport) {
 
@@ -39,25 +39,18 @@ module.exports = function (app, passport) {
 
     app.get('/search', function (req, res) {
         // Connect to the db
-        MongoClient.connect("mongodb://admin:12345@localhost:27017/ipstats", function(err, db) {
-            if(err) {
-                return console.dir(err);
-            }
-
-            db.collection('ips_dev', function(err, collection) {
-                collection.count(function(err, count) {
+        mongodb.collection('ips_dev', function (err, collection) {
+            collection.count(function (err, count) {
                 res.render('search.ejs', {
                     count: count
-                    });
                 });
             });
         });
-
     });
 
     app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
 
-    // handle the callback after facebook has authenticated the user
+// handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
             successRedirect: '/profile',
@@ -67,7 +60,7 @@ module.exports = function (app, passport) {
 
     app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
-    // the callback after google has authenticated the user
+// the callback after google has authenticated the user
     app.get('/auth/google/callback',
         passport.authenticate('google', {
             successRedirect: '/profile',
@@ -76,7 +69,7 @@ module.exports = function (app, passport) {
 
     app.get('/auth/github', passport.authenticate('github', {scope: ['profile', 'email']}));
 
-    // the callback after google has authenticated the user
+// the callback after google has authenticated the user
     app.get('/auth/github/callback',
         passport.authenticate('github', {
             successRedirect: '/profile',
@@ -96,7 +89,7 @@ module.exports = function (app, passport) {
 
     app.get('/connect/facebook', passport.authorize('facebook', {scope: 'email'}));
 
-    // handle the callback after facebook has authorized the user
+// handle the callback after facebook has authorized the user
     app.get('/connect/facebook/callback',
         passport.authorize('facebook', {
             successRedirect: '/profile',
@@ -130,7 +123,8 @@ module.exports = function (app, passport) {
             }
         });
     });
-};
+}
+;
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

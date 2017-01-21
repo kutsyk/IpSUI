@@ -1,3 +1,11 @@
-module.exports = {
-    'url' : 'admin:12345@localhost:27017/ipstats' // looks like mongodb://<user>:<pass>@mongo.onmodulus.net:27017/Mikha4ot
-};
+var MongoClient = require('mongodb').MongoClient;
+MongoDB = null
+MongoClient.connect("mongodb://admin:12345@localhost:27017/ipstats", function (err, db) {
+    if (err) {
+        console.log("here");
+        return console.dir(err);
+    }
+    MongoDB = db
+});
+
+module.exports  = MongoDB
