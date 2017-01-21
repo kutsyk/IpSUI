@@ -1,0 +1,23 @@
+.navbar {
+    border-radius: 0;
+    background-color: #333;
+}
+.btn {
+    border-radius: 0;
+}
+
+.dropdown-menu {
+    border-radius: 0;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+a {
+    color: white;
+}
+
+.active {
+
+}

@@ -2,40 +2,47 @@
 <!doctype html>
 <html>
 <head>
-    <title>Main page</title>
+    <title>IP.S</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 <body>
+<% include partial/header.ejs %>
 <div class="container-fluid">
-    <div class="col-md-8">
+    <div class="row">
+        <div class="col-md-8">
 
-    </div>
-    <div class="col-md-4 panel">
-        <p>Login or Register with:</p>
-        <form action="/login" method="post">
-            <div>
-                <label>Email</label>
-                <input type="text" class="form-control" name="email">
+        </div>
+        <div class="col-md-4 panel">
+            <p>Login or Register with:</p>
+            <form action="/login" method="post">
+                <div>
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <button type="submit" class="btn btn-warning">Login</button>
+                <p>Need an account? <a href="/signup">Signup</a></p>
+            </form>
+            <hr>
+            <div class="row">
+                <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span></a>
+                <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span></a>
+                <a href="/auth/github" class="btn btn-default"><span class="fa fa-github"></span></a>
             </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="password">
-            </div>
-            <button type="submit" class="btn btn-warning">Login</button>
-            <p>Need an account? <a href="/signup">Signup</a></p>
-        </form>
-        <hr>
-        <div class="row">
-            <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span></a>
-            <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span></a>
-            <a href="/auth/github" class="btn btn-default"><span class="fa fa-github"></span></a>
         </div>
     </div>
     <footer>
         <% include partial/footer.ejs %>
     </footer>
 </div>
+
+<script src="/js/jquery.min.js" crossorigin="anonymous"></script>
+<script src="/bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
