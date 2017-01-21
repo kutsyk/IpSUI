@@ -15,7 +15,7 @@
     <div class="col-md-4 panel">
         <p>Login or Register with:</p>
         <form action="/login" method="post">
-            <div class="form-group">
+            <div>
                 <label>Email</label>
                 <input type="text" class="form-control" name="email">
             </div>
@@ -23,25 +23,19 @@
                 <label>Password</label>
                 <input type="password" class="form-control" name="password">
             </div>
-
-            <button type="submit" class="btn btn-warning btn-lg">Login</button>
+            <button type="submit" class="btn btn-warning">Login</button>
+            <p>Need an account? <a href="/signup">Signup</a></p>
         </form>
         <hr>
-
-        <p>Need an account? <a href="/signup">Signup</a></p>
         <div class="row">
-            <a href="/login" class="btn btn-secondary">Login</a>
-            <a href="/signup">Signup</a>
-        </div>
-        <div class="row">
-            <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
-            <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
-            <a href="/auth/github" class="btn btn-default"><span class="fa fa-github"></span> GitHub</a>
+            <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span></a>
+            <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span></a>
+            <a href="/auth/github" class="btn btn-default"><span class="fa fa-github"></span></a>
         </div>
     </div>
-<footer>
-    <% include  partial/footer.ejs %>
-</footer>
+    <footer>
+        <% include partial/footer.ejs %>
+    </footer>
 </div>
 </body>
 </html>
