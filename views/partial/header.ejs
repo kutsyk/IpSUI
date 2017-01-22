@@ -29,8 +29,53 @@
             </ul>
             <div class="navbar-right">
                 <ul class="nav navbar-nav">
-                    <li class="nav_colors"><a href="/login">Login</a></li>
-                    <li><a href="/login">Sign Up</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Login</a>
+                        <ul class="dropdown-menu">
+                            <li style="margin: 33px;">
+                                <div class="row text-center">
+                                    <form class="form" action="/login" method="post" accept-charset="UTF-8">
+                                        <div class="form-group">
+                                            <input type="text" name="email" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" placeholder="Password">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a href="/signup" class="btn btn-login">Signup</a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-login">Login</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="row" style="padding-top: 5%;">
+                                    <div class="col-md-6" style="padding-right: 0; padding-left: 0;">
+                                        <a href="/auth/facebook" class="btn btn-login">
+                                            <span class="fa fa-facebook"></span>
+                                            &nbsp;Facebok</a>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0; padding-left: 1%;">
+                                        <a href="/auth/google" class="btn btn-login">
+                                            <span class="fa fa-google-plus"></span>
+                                            &nbsp;Google
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" style="padding-right: 0; padding-left: 0;">
+                                        <a href="/auth/github" class="btn btn-login">
+                                            <span class="fa fa-github"></span>&nbsp;GitHub</a>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0; padding-left: 0;">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

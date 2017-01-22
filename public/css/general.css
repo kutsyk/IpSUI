@@ -2,6 +2,23 @@
     border-radius: 0;
     background-color: #333;
 }
+
+.login-form {
+    border-radius: 0;
+    background-color: #333;
+}
+
+.btn-login:hover {
+    background-color: whitesmoke;
+    color: #333;
+}
+
+.btn-login {
+    background-color: #333;
+    color: white;
+    width: 100%;
+}
+
 .btn {
     border-radius: 0;
 }
