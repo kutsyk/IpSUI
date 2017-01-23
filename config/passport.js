@@ -315,7 +315,7 @@ module.exports = function (passport) {
             consumerSecret  : configAuth.twitterAuth.consumerSecret,
             callbackURL     : configAuth.twitterAuth.callbackURL,
         },
-        function(token, tokenSecret, profile, done) {
+        function(req, token, tokenSecret, profile, done) {
             // asynchronous
             process.nextTick(function () {
                 // check if the user is already logged in
