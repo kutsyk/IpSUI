@@ -4,19 +4,16 @@ var mongodb = require('./../config/database.js');
 module.exports = function (app, passport) {
 
     app.get('/', function (req, res) {
-        res.render('index.ejs', {message: req.flash('loginMessage')}); // load the index.ejs file
-    });
-
-    // show the login form
-    app.get('/login', function (req, res) {
-        // render the page and pass in any flash data if it exists
-        res.render('login.ejs', {message: req.flash('loginMessage')});
+        res.render('index.ejs', {
+            user: req.user
+        }); // load the index.ejs file
     });
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/profile', // redirect to the secure profile section
         failureRedirect: '/', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
+        failureFlash: true// allow flash messages,
+
     }));
 
     app.get('/signup', function (req, res) {
@@ -33,7 +30,7 @@ module.exports = function (app, passport) {
 
     app.get('/profile', isLoggedIn, function (req, res) {
         res.render('profile.ejs', {
-            user: req.user // get the user out of session and pass to template
+            user: req.user
         });
     });
 
@@ -56,13 +53,6 @@ module.exports = function (app, passport) {
         })
     );
 
-    app.get('/auth/twitter', passport.authenticate('twitter', {scope: ['profile', 'email']}));
-    app.get('/auth/twitter/callback',
-        passport.authenticate('twitter', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
-        }));
-
     app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
     app.get('/auth/google/callback',
         passport.authenticate('google', {
@@ -74,6 +64,13 @@ module.exports = function (app, passport) {
     app.get('/auth/github', passport.authenticate('github', {scope: ['profile', 'email']}));
     app.get('/auth/github/callback',
         passport.authenticate('github', {
+            successRedirect: '/profile',
+            failureRedirect: '/'
+        }));
+
+    app.get('/auth/twitter', passport.authenticate('twitter', {scope: ['profile', 'email']}));
+    app.get('/auth/twitter/callback',
+        passport.authenticate('twitter', {
             successRedirect: '/profile',
             failureRedirect: '/'
         }));
@@ -95,21 +92,26 @@ module.exports = function (app, passport) {
             failureRedirect: '/'
         }));
 
-
-    app.get('/connect/twitter', passport.authorize('twitter', { scope : 'email' }));
-    app.get('/connect/twitter/callback',
-        passport.authorize('twitter', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
-        }));
-
-    app.get('/connect/google', passport.authorize('google', { scope : ['profile', 'email'] }));
+    app.get('/connect/google', passport.authorize('google', {scope: ['profile', 'email']}));
     app.get('/connect/google/callback',
         passport.authorize('google', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect: '/profile',
+            failureRedirect: '/'
         }));
 
+    app.get('/connect/github', passport.authorize('github', {scope: ['profile', 'email']}));
+    app.get('/connect/github/callback',
+        passport.authorize('github', {
+            successRedirect: '/profile',
+            failureRedirect: '/'
+        }));
+
+    app.get('/connect/twitter', passport.authorize('twitter', {scope: 'email'}));
+    app.get('/connect/twitter/callback',
+        passport.authorize('twitter', {
+            successRedirect: '/profile',
+            failureRedirect: '/'
+        }));
 
     app.get('/logout', function (req, res) {
         req.logout();

@@ -29,6 +29,10 @@
             </ul>
             <div class="navbar-right">
                 <ul class="nav navbar-nav">
+                    <% if (user) { %>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/logout">Log out</a></li>
+                    <% } else { %>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Login</a>
@@ -67,17 +71,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6" style="padding: 1% 1% 0 0;">
-                                        <a href="/auth/github" class="btn btn-login" >
+                                        <a href="/auth/github" class="btn btn-login">
                                             <span class="fa fa-github"></span>&nbsp;GitHub</a>
                                     </div>
                                     <div class="col-md-6" style="padding: 1% 0 1% 0;">
-                                        <a href="/auth/twitter" class="btn btn-login" >
+                                        <a href="/auth/twitter" class="btn btn-login">
                                             <span class="fa fa-twitter"></span>&nbsp;Twitter</a>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </li>
+                    <% } %>
                 </ul>
             </div>
         </div>

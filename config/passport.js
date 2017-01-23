@@ -43,7 +43,6 @@ module.exports = function (passport) {
             // asynchronous
             process.nextTick(function () {
                 if (!req.user) {
-
                     User.findOne({'facebook.id': profile.id}, function (err, user) {
                         if (err)
                             return done(err);
@@ -60,7 +59,6 @@ module.exports = function (passport) {
                                     return done(null, user);
                                 });
                             }
-
                             return done(null, user); // user found, return that user
                         } else {
                             var newUser = new User();
@@ -320,13 +318,13 @@ module.exports = function (passport) {
             process.nextTick(function () {
                 // check if the user is already logged in
                 if (!req.user) {
-
+                    console.log("No HERE");
                     User.findOne({'twitter.id': profile.id}, function (err, user) {
+
                         if (err)
                             return done(err);
 
                         if (user) {
-
                             // if there is a user id already but no token (user was linked at one point and then removed)
                             if (!user.twitter.token) {
                                 user.twitter.id          = profile.id;
@@ -360,7 +358,7 @@ module.exports = function (passport) {
                 } else {
                     // user already exists and is logged in, we have to link accounts
                     var user = req.user; // pull the user out of the session
-
+                    console.log("logged in");
                     user.twitter.id = profile.id;
                     user.twitter.token = token;
                     user.twitter.username = profile.username    ;
