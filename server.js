@@ -4,6 +4,7 @@ var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
+var fs = require('fs');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -33,9 +34,13 @@ app.use(function(req, res, next) {
 });
 
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, passport);
+require('./app/controllers/MainController')(app);
+require('./app/controllers/LoginController')(app, passport);
+require('./app/controllers/ProfileController')(app, passport);
 // launch ======================================================================
 
 app.listen(port);

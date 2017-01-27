@@ -35,6 +35,14 @@ a {
     color: white;
 }
 
+a:hover {
+    color: #333;
+}
+
+.open > a {
+    color: #333;
+}
+
 .active {
 
 }
