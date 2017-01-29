@@ -4,8 +4,7 @@
 
     module.exports =  {
         connect: function(dburl, callback) {
-            client.connect(dburl,
-                function(err, db){
+            client.connect(dburl, (err, db) => {
                     mongodb = db;
                     if(callback) { callback(); }
                 });

@@ -14,9 +14,9 @@ var morgan = require('morgan')
 mongoose.connect('localhost:27017/ipstats'); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
-var mongodb =  require('./config/database');
 
-mongodb.connect('mongodb://localhost:27017/ipstats', function() {
+var mongodb =  require('./config/database');
+mongodb.connect('mongodb://localhost:27017/ipstats', () => {
     console.log('Connected to MongoDB.');
 });
 
