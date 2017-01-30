@@ -38,8 +38,14 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(function(req, res, next){
+    res.locals.user = req.session.user;
+    next();
+});
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
+
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport);

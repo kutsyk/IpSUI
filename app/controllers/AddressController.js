@@ -3,33 +3,8 @@ var promises = require('promises');
 var fs = require('fs');
 let MongoDB = require('./../../config/database.js');
 let IpHelper = require('./../helpers/IpHelper');
-var Bluebird = require("bluebird");
-var rp = require('request-promise');
 
 module.exports = function (app) {
-
-    app.get('/show/:ip', function (req, res, next) {
-        var options = {
-            url: 'https://rest.db.ripe.net/search?source=ripe&query-string=31.131.19.12',
-            headers: {
-                'Accept': 'application/json'
-            }
-        };
-        request.get(options, function (err, response, body) {
-            if (!err && response.statusCode == 200) {
-                var infoBody = JSON.parse(body);
-                res.render('address/info.ejs',
-                    {
-                        //rest.db.ripe.net/search?source=ripe&query-string=31.131.19.12
-                        ip: req.params.ip,
-                        inetnum: infoBody.objects["object"][0],
-                        organization: infoBody.objects["object"][1],
-                        person: infoBody.objects["object"][2],
-                        route: infoBody.objects["object"][3]
-                    });
-            }
-        });
-    });
 
     app.post('/search', function (req, res, next) {
         let dec = IpHelper.IpToDec(req.body.query);
@@ -64,13 +39,14 @@ module.exports = function (app) {
                         ip: ip
                     };
                 }).then((result) => {
-                    RenderInfo(res, JSON.parse(result.ripe), result.banner, result.ip);
+                    RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip);
                 }).catch((err) => console.error(err));
         }).catch((err) => console.error(err));
     });
 
-    function RenderInfo(res, ripe, banner, ip) {
+    function RenderInfo(req, res, ripe, banner, ip) {
         res.render('address/info.ejs', {
+            user: req.user,
             ip: ip,
             inetnum: ripe.objects["object"][0],
             organization: ripe.objects["object"][1],
