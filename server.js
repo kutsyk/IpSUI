@@ -9,7 +9,8 @@ var express = require('express')
 var morgan = require('morgan')
     , cookieParser = require('cookie-parser')
     , bodyParser = require('body-parser')
-    , session = require('express-session');
+    , session = require('express-session')
+    , favicon = require('serve-favicon');
 
 mongoose.connect('localhost:27017/ipstats'); // connect to our database
 

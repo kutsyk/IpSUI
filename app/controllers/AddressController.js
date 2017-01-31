@@ -40,8 +40,8 @@ module.exports = function (app) {
                         ip: ip
                     };
                 }).then((result) => {
-                    RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip);
-                }).catch((err) => console.error(err));
+                RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip);
+            }).catch((err) => console.error(err));
         }).catch((err) => console.error(err));
     });
 
