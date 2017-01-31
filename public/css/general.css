@@ -1,3 +1,4 @@
+
 .navbar {
     border-radius: 0;
     background-color: #333;
@@ -31,11 +32,11 @@
     border-radius: 0;
 }
 
-.nav > * > a {
+.nav a {
     color: white;
 }
 
-.nav > * > a:hover {
+.nav a:hover {
     color: #333;
 }
 
@@ -49,29 +50,29 @@
     border-color: #333;
 }
 
-/*.panel .panel-heading:hover {*/
-    /*color: #333;*/
-    /*background-color: whitesmoke;*/
-    /*border-color: #333;*/
-/*}*/
-
 .panel-heading a {
     color: white;
 }
 
-/*.panel-heading:hover a {*/
-    /*color: #333;*/
-/*}*/
-
-/*.panel-heading:hover a:hover {*/
-    /*color: #333;*/
-/*}*/
-
-.clickable
-{
+.clickable {
     cursor: pointer;
 }
 
-.active {
-
+.port-box {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3%;
+    width: 4em;
+    height: 4em;
+    color: white;
 }
+
+a .port-box {
+    color: white;
+    text-decoration: none;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }

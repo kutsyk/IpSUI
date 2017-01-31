@@ -24,8 +24,9 @@ module.exports = function (app) {
             request.get(options, function (err, response, body) {
                 if (!err && response.statusCode == 200) {
                     resolve(body);
-                } else
+                } else {
                     reject(response);
+                }
             })
         });
 
@@ -35,7 +36,7 @@ module.exports = function (app) {
                 .then((doc) => {
                     return {
                         ripe: ripeInfo,
-                        banner: doc,
+                        banner: JSON.parse(JSON.stringify(doc)),
                         ip: ip
                     };
                 }).then((result) => {
@@ -52,7 +53,7 @@ module.exports = function (app) {
             organization: ripe.objects["object"][1],
             person: ripe.objects["object"][2],
             route: ripe.objects["object"][3],
-            banner: JSON.stringify(banner)
+            banner: banner
         });
 
     }
