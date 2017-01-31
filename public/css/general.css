@@ -31,16 +31,45 @@
     border-radius: 0;
 }
 
-a {
+.nav > * > a {
     color: white;
 }
 
-a:hover {
+.nav > * > a:hover {
     color: #333;
 }
 
 .open > a {
     color: #333;
+}
+
+.panel .panel-heading {
+    color: white;
+    background-color: #333;
+    border-color: #333;
+}
+
+/*.panel .panel-heading:hover {*/
+    /*color: #333;*/
+    /*background-color: whitesmoke;*/
+    /*border-color: #333;*/
+/*}*/
+
+.panel-heading a {
+    color: white;
+}
+
+/*.panel-heading:hover a {*/
+    /*color: #333;*/
+/*}*/
+
+/*.panel-heading:hover a:hover {*/
+    /*color: #333;*/
+/*}*/
+
+.clickable
+{
+    cursor: pointer;
 }
 
 .active {

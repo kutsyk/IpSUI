@@ -4,6 +4,7 @@
     <title> <%= ip %></title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 <body>
@@ -11,14 +12,13 @@
 <div class="col-md-6">
     <div class="row">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel">
+                <div class="panel-heading clickable" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                            <span role="button" data-toggle="collapse" href="#person"
-                                  aria-expanded="true" aria-controls="collapseOne">
+                            <span role="button" href="#person">
                                 <span class="glyphicon glyphicon-collapse-down"></span>
                                 Person:
-                                <a href="<%= person.link.href %>"><%= person.attributes.attribute[0].value %></a>
+                                <a href="<%= person.link.href %>" target="_blank"><%= person.attributes.attribute[0].value %></a>
                             </span>
                     </h4>
                 </div>
@@ -49,13 +49,12 @@
     </div>
     <div class="row">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel">
+                <div class="panel-heading clickable" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                            <span role="button" data-toggle="collapse" href="#organization"
-                                  aria-expanded="true" aria-controls="collapseOne">
-                                <span class="glyphicon glyphicon-collapse-down"></span> Organization: <a
-                                        href="<%= organization.link.href %>"><%= organization.link.href %></a>
+                            <span role="button" href="#organization">
+                                <span class="glyphicon glyphicon-collapse-down"></span> Organization:
+                                <a href="<%= organization.link.href %>" target="_blank"><%= organization.link.href %></a>
                             </span>
                     </h4>
                 </div>
@@ -87,13 +86,12 @@
 
     <div class="row">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel">
+                <div class="panel-heading clickable" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                            <span role="button" data-toggle="collapse" href="#inetnum"
-                                  aria-expanded="true" aria-controls="collapseOne">
-                                <span class="glyphicon glyphicon-collapse-down"></span> Inetnum: <a
-                                        href="<%= inetnum.link.href %>"><%= inetnum.link.href %></a>
+                            <span role="button" href="#inetnum">
+                                <span class="glyphicon glyphicon-collapse-down"></span> Inetnum:
+                                <a href="<%= inetnum.link.href %>" target="_blank"><%= inetnum.link.href %></a>
                             </span>
                     </h4>
                 </div>
@@ -125,13 +123,12 @@
 
     <div class="row">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel">
+                <div class="panel-heading clickable" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                            <span role="button" data-toggle="collapse" href="#route"
-                                  aria-expanded="true" aria-controls="collapseOne">
-                                <span class="glyphicon glyphicon-collapse-down"></span> Route: <a
-                                        href="<%= route.link.href %>"><%= route.link.href %></a>
+                            <span role="button" href="#route">
+                                <span class="glyphicon glyphicon-collapse-down"></span> Route:
+                                <a href="<%= route.link.href %>" target="_blank"><%= route.link.href %></a>
                             </span>
                     </h4>
                 </div>
@@ -161,11 +158,12 @@
         </div>
     </div>
 </div>
-<div>
+<div class="col-sm-6 col-md-6">
     <%= banner %>
 </div>
 
 <script src="/js/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/general/panel.js"></script>
 </body>
 </html>
