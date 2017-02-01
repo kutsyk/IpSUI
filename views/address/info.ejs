@@ -62,7 +62,7 @@
                         <% if (organizationObj) { %>
                         <tr>
                             <td>
-                                <%= organizationObj.value.toUpperCase() %>
+                                <%= organizationObj.name.toUpperCase() %>
                             </td>
                             <td>
                                 <% if (organizationObj.link != null) { %>
@@ -166,24 +166,32 @@
 </div>
 <div class="col-sm-6 col-md-6">
     <% if (banner !== null && banner) { %>
-    <% var ports = banner.ports; %>
-    <ul>
+    <% var ports = banner.ports.sort(function(a, b) { return parseInt(a) - parseInt(b);}); %>
+    <div class="row">
+        <ul>
+            <% for(var i = 0; i < ports.length; i++) { %>
+            <%
+                var colorForPort = '#333';
+                if (banner[ports[i] + ''].state === 'open')
+                    colorForPort = '#009688';
+                else if (banner[ports[i] + ''].state === 'filtered')
+                    colorForPort = '#FF9800';
+                else
+                    colorForPort = '#F44336';
+            %>
+            <a href="#<%= ports[i] %>">
+                <li class="port-box grow" style="background-color: <%= colorForPort %>"><%= ports[i] %></li>
+            </a>
+            <% } %>
+        </ul>
+    </div>
+    <div class="row">
         <% for(var i = 0; i < ports.length; i++) { %>
-        <%
-            var colorForPort = '#333';
-            if (banner[ports[i] + ''].state === 'open')
-                colorForPort = '#009688';
-            else if (banner[ports[i] + ''].state === 'filtered')
-                colorForPort = '#FF9800';
-            else
-                colorForPort = '#F44336';
-        %>
-        <a href="#<%= ports[i] %>">
-            <li class="port-box grow" style="background-color: <%= colorForPort %>"><%= ports[i] %></li>
-        </a>
+        <%= ports[i] %>
+        <%= JSON.stringify(banner[ports[i]]) %>
+        <hr>
         <% } %>
-    </ul>
-    <%= banner %>
+    </div>
     <% } else { %>
     THIS HOST WAS NOT RESEARCHED
     <% } %>
