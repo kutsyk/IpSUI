@@ -11,6 +11,9 @@
 <% include ../partial/header.ejs %>
 <div class="col-md-6">
     <div class="row">
+        <h1>MAP</h1>
+    </div>
+    <div class="row">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel">
                 <div class="panel-heading clickable" role="tab" id="headingPerson">
@@ -166,7 +169,9 @@
 </div>
 <div class="col-sm-6 col-md-6">
     <% if (banner !== null && banner) { %>
-    <% var ports = banner.ports.sort(function(a, b) { return parseInt(a) - parseInt(b);}); %>
+    <% var ports = banner.ports.sort(function (a, b) {
+        return parseInt(a) - parseInt(b);
+    }); %>
     <div class="row">
         <ul>
             <% for(var i = 0; i < ports.length; i++) { %>
@@ -180,16 +185,32 @@
                     colorForPort = '#F44336';
             %>
             <a href="#<%= ports[i] %>">
-                <li class="port-box grow" style="background-color: <%= colorForPort %>"><%= ports[i] %></li>
+                <li class="port-box text-center grow" style="background-color: <%= colorForPort %>">
+                    <%= ports[i] %> </br>
+                    <%= banner[ports[i]].state %>
+                </li>
             </a>
             <% } %>
         </ul>
     </div>
     <div class="row">
-        <% for(var i = 0; i < ports.length; i++) { %>
-        <%= ports[i] %>
-        <%= JSON.stringify(banner[ports[i]]) %>
-        <hr>
+        <% for(i = 0; i < ports.length; i++) {
+            var port = ports[i]; %>
+        <div class="row">
+            <div class="row">
+                <%= port %>
+            </div>
+            <div class="row">
+                <%= banner[port].product %>
+            </div>
+            <div class="row">
+                <%= banner[port].name %>
+            </div>
+            <div class="row">
+                <%= JSON.stringify(banner[ports[i]]) %>
+            </div>
+            <hr>
+        </div>
         <% } %>
     </div>
     <% } else { %>

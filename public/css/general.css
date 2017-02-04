@@ -1,21 +1,24 @@
-
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
 .navbar {
     border-radius: 0;
-    background-color: #333;
+    background-color: #424242;
 }
 
 .login-form {
     border-radius: 0;
-    background-color: #333;
+    background-color: #424242;
 }
 
 .btn-login:hover {
     background-color: whitesmoke;
-    color: #333;
+    color: #424242;
 }
 
 .btn-login {
-    background-color: #333;
+    background-color: #424242;
     color: white;
     width: 100%;
 }
@@ -37,17 +40,17 @@
 }
 
 .nav a:hover {
-    color: #333;
+    color: #424242;
 }
 
 .open > a {
-    color: #333;
+    color: #424242;
 }
 
 .panel .panel-heading {
     color: white;
-    background-color: #333;
-    border-color: #333;
+    background-color: #424242;
+    border-color: #424242;
 }
 
 .panel-heading a {
