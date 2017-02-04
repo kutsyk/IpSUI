@@ -1,8 +1,9 @@
-let request = require('request');
-var promises = require('promises');
-var fs = require('fs');
-let MongoDB = require('./../../config/database.js');
-let IpHelper = require('./../helpers/IpHelper');
+let request = require('request')
+    , promises = require('promises')
+    , fs = require('fs')
+    , ObjectID = require('mongodb').ObjectID
+    , MongoDB = require('./../../config/database.js')
+    , IpHelper = require('./../helpers/IpHelper');
 
 module.exports = function (app) {
 
@@ -32,7 +33,7 @@ module.exports = function (app) {
 
         prom.then((ripeInfo) => {
             let ipBanners = MongoDB.db().collection('ips_banners');
-            ipBanners.findOne({dec_ip: parseInt(dec)})
+            ipBanners.findOne({_id : new ObjectID("585d84eb74fece0398dae682")})
                 .then((doc) => {
                     return {
                         ripe: ripeInfo,
