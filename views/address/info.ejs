@@ -42,7 +42,7 @@
         <div class="col-sm-11 col-md-11">
             <h3>
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                <%= ip %>
+                <a href="//<%= ip %>" target="_blank"><%= ip %></a>
             </h3>
             <hr>
             <% if (banner !== null && banner) { %>
@@ -122,10 +122,11 @@
                         <% } %>
                         <% if (script) { %>
                         <div class="row">
-                           <b> Title:</b> <%= script["http-title"] %>
+                           <b> Title:</b> <%= decodeURIComponent( escape(script["http-title"].replace("\\n", "\n"))) %>
                         </div>
                         <div class="row">
-                            <b>Header:</b> <%= script["http-headers"] %>
+                            <b>Header:</b>
+                            <div class="row"><%= script["http-headers"].replace("\\n", "\n") %></div>
                         </div>
                         <% } %>
                         <% if (cpe) { %>
@@ -141,6 +142,7 @@
                     </div>
                 </div>
                 <hr>
+
                 <% } %>
             </div>
             <% } else { %>
