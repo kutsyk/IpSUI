@@ -76,6 +76,7 @@
 }
 
 a .port-box {
+    margin: 1.5em;
     color: white;
     text-decoration: none;
 }

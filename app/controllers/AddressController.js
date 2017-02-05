@@ -1,4 +1,5 @@
 let request = require('request')
+    , requestPromise = require('request-promise')
     , promises = require('promises')
     , fs = require('fs')
     , ObjectID = require('mongodb').ObjectID
@@ -33,28 +34,46 @@ module.exports = function (app) {
 
         prom.then((ripeInfo) => {
             let ipBanners = MongoDB.db().collection('ips_banners');
-            ipBanners.findOne({_id : new ObjectID("585d84eb74fece0398dae682")})
+            ipBanners.findOne({ dec_ip: parseInt(dec)})
+            // ipBanners.findOne({dec_ip: dec})
                 .then((doc) => {
-                    return {
-                        ripe: ripeInfo,
-                        banner: JSON.parse(JSON.stringify(doc)),
-                        ip: ip
-                    };
+                    let bannerRes = JSON.parse(JSON.stringify(doc));
+                    let addressRes = {};
+                    if (bannerRes != null) {
+                        addressRes = bannerRes.address;
+                        return {
+                            ripe: ripeInfo,
+                            banner: bannerRes,
+                            address: addressRes,
+                            ip: ip
+                        };
+                    } else {
+                        return requestPromise('http://freegeoip.net/json/' + ip)
+                            .then((result) => {
+                                return {
+                                    ripe: ripeInfo,
+                                    banner: null,
+                                    address: result,
+                                    ip: ip
+                                };
+                            });
+                    }
                 }).then((result) => {
-                RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip);
+                RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip, result.address);
             }).catch((err) => console.error(err));
         }).catch((err) => console.error(err));
     });
 
-    function RenderInfo(req, res, ripe, banner, ip) {
+    function RenderInfo(req, res, ripe, banner, ip, address) {
         res.render('address/info.ejs', {
             user: req.user,
             ip: ip,
+            address: address,
             inetnum: ripe.objects["object"][0],
             organization: ripe.objects["object"][1],
             person: ripe.objects["object"][2],
             route: ripe.objects["object"][3],
-            banner: banner
+            banner: banner,
         });
 
     }
