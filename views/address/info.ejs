@@ -15,6 +15,7 @@
             flex-direction: row;
             align-items: flex-start;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .port-block-box {
@@ -173,11 +174,15 @@
                     <div class="panel-heading clickable" role="tab" id="headingPerson">
                         <span class="glyphicon glyphicon-collapse-down"></span>
                         Person:
+                        <% if (person) {%>
                         <a href="<%= person.link.href %>"
                            target="_blank"><%= person.attributes.attribute[0].value %></a>
+                        <%} else { %>
+                            Undefined
+                        <% } %>
                     </div>
                     <div class="panel-body">
-                        <% if (person.attributes) { %>
+                        <% if (person && person.attributes) { %>
                         <table class="table table-hover">
                             <% for(var i = 0; i < person.attributes.attribute.length; i++) { %>
                             <tr>
