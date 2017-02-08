@@ -12,12 +12,11 @@ var morgan = require('morgan')
     , session = require('express-session')
     , favicon = require('serve-favicon');
 
-mongoose.connect('localhost:27017/ipstats'); // connect to our database
-
+mongoose.connect('127.0.0.1:27017/ipstats'); // connect to our database
 require('./config/passport')(passport); // pass passport for configuration
-
 var mongodb =  require('./config/database');
-mongodb.connect('mongodb://localhost:27017/ipstats', () => {
+
+mongodb.connect('mongodb://127.0.0.1:27017/ipstats', () => {
     console.log('Connected to MongoDB.');
 });
 
@@ -27,7 +26,7 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
 
 app.set('view engine', 'ejs'); // set up ejs for templating
-
+2
 // required for passport
 app.use(session({secret: 'secretforsession'})); // session secret
 app.use(passport.initialize());

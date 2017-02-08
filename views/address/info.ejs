@@ -1,5 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<html>
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
 <head>
     <title><%= ip %></title>
     <link rel="icon" href="/favicon.png">
@@ -79,7 +79,7 @@
                 %>
                 <a href="#<%= ports[i] %>">
                     <li class="port-box text-center grow" style="background-color: <%= colorForPort %>">
-                        <%= ports[i] %> </br>
+                        <%= ports[i] %> <br/>
                         <%= banner[ports[i]].state %>
                     </li>
                 </a>
@@ -178,7 +178,7 @@
                         <a href="<%= person.link.href %>"
                            target="_blank"><%= person.attributes.attribute[0].value %></a>
                         <%} else { %>
-                            Undefined
+                        there is nothing for such address in the web
                         <% } %>
                     </div>
                     <div class="panel-body">
@@ -213,11 +213,14 @@
                 <div class="panel">
                     <div class="panel-heading clickable" role="tab" id="headingOrganization">
                         <span class="glyphicon glyphicon-collapse-down"></span> Organization:
-                        <a href="<%= organization.link.href %>"
-                           target="_blank"><%= organization.link.href %></a>
+                        <% if (organization) { %>
+                            <a href="<%= organization.link.href %>" targ    et="_blank"><%= organization.link.href %></a>
+                        <% } else { %>
+                            there is nothing for such address in the web
+                        <% } %>
                     </div>
                     <div class="panel-body">
-                        <% if (organization.attributes) { %>
+                        <% if (organization && organization.attributes) { %>
                         <table class="table table-hover">
                             <% for(var i = 0; i < organization.attributes.attribute.length; i++) { %>
                             <% var organizationObj = organization.attributes.attribute[i]; %>
@@ -251,10 +254,14 @@
                 <div class="panel">
                     <div class="panel-heading clickable" role="tab">
                         <span class="glyphicon glyphicon-collapse-down"></span> Inetnum:
+                        <% if (inetnum) { %>
                         <a href="<%= inetnum.link.href %>" target="_blank"><%= inetnum.link.href %></a>
+                        <% } else { %>
+                        there is nothing for such address in the web
+                        <% } %>
                     </div>
                     <div class="panel-body">
-                        <% if (inetnum.attributes.attribute) { %>
+                        <% if (inetnum && inetnum.attributes.attribute) { %>
                         <table class="table table-hover">
                             <% for(var i = 0; i < inetnum.attributes.attribute.length; i++) { %>
                             <% var inetnumObj = inetnum.attributes.attribute[i]; %>
@@ -276,7 +283,7 @@
                             <% }} %>
                         </table>
                         <% } else { %>
-                        Hmmm, looks like something happened.
+                        Hmmm, there is nothing in web for this address.
                         <% } %>
                     </div>
                 </div>
@@ -292,7 +299,7 @@
                             <% if (route) { %>
                             <a href="<%= route.link.href %>" target="_blank"><%= route.link.href %></a>
                             <% } else { %>
-                            <a href="#" target="_blank">Undefined</a>
+                            there is nothing for such address in the web
                             <% } %>
                         </h4>
                     </div>
