@@ -138,13 +138,17 @@
                         </div>
                         <% } %>
                         <% if (script) { %>
+                            <% if (script["http-title"]) { %>
                         <div class="row">
                             <b> Title:</b> <%= decodeURIComponent(escape(script["http-title"].replace("\\n", "\n"))) %>
                         </div>
-                        <div class="row">
-                            <b>Header:</b>
-                            <div class="row"><%= script["http-headers"].replace("\\n", "\n") %></div>
-                        </div>
+                            <% } %>
+                            <% if (script["http-headers"]) { %>
+                            <div class="row">
+                                <b>Header:</b>
+                                <div class="row"><%= script["http-headers"].replace("\\n", "\n") %></div>
+                            </div>
+                            <% } %>
                         <% } %>
                         <% if (cpe) { %>
                         <div class="row">
@@ -174,10 +178,10 @@
                     <div class="panel-heading clickable" role="tab" id="headingPerson">
                         <span class="glyphicon glyphicon-collapse-down"></span>
                         Person:
-                        <% if (person) {%>
+                        <% if (person) { %>
                         <a href="<%= person.link.href %>"
                            target="_blank"><%= person.attributes.attribute[0].value %></a>
-                        <%} else { %>
+                        <% } else { %>
                         there is nothing for such address in the web
                         <% } %>
                     </div>
@@ -214,9 +218,9 @@
                     <div class="panel-heading clickable" role="tab" id="headingOrganization">
                         <span class="glyphicon glyphicon-collapse-down"></span> Organization:
                         <% if (organization) { %>
-                            <a href="<%= organization.link.href %>" targ    et="_blank"><%= organization.link.href %></a>
+                        <a href="<%= organization.link.href %>" targ et="_blank"><%= organization.link.href %></a>
                         <% } else { %>
-                            there is nothing for such address in the web
+                        there is nothing for such address in the web
                         <% } %>
                     </div>
                     <div class="panel-body">
