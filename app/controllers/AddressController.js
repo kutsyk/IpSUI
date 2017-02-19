@@ -4,7 +4,8 @@ let request = require('request')
     , fs = require('fs')
     , ObjectID = require('mongodb').ObjectID
     , MongoDB = require('./../../config/database.js')
-    , IpHelper = require('./../helpers/IpHelper');
+    , IpHelper = require('./../helpers/IpHelper')
+    , wappalyzer = require('@wappalyzer/wappalyzer');;
 
 module.exports = function (app) {
 
@@ -54,21 +55,35 @@ module.exports = function (app) {
     }
 
     app.post('/search', function (req, res, next) {
-
         let dec = IpHelper.IpToDec(req.body.query);
         res.redirect('/address/' + dec);
+    });
+
+    app.get('/:dec/services', function (req, res, next) {
+        let dec = req.params.dec;
+        let ip = IpHelper.DecToIp(dec);
+        wappalyzer.run(['http://' + ip + '/', '--quiet'], function(result, error) {
+            if (result) {
+                res.send(result);
+            }
+
+            if (error) {
+                return res.send(error);
+            }
+        });
+
     });
 
     app.get('/address/:dec', function (req, res, next) {
         let dec = req.params.dec;
         let ip = IpHelper.DecToIp(dec);
-        var options = {
+        let options = {
             url: 'https://rest.db.ripe.net/search?source=ripe&query-string=' + ip,
             headers: {
                 'Accept': 'application/json'
             }
         };
-        var prom = new Promise((resolve, reject) => {
+        let prom = new Promise((resolve, reject) => {
             request.get(options, function (err, response, body) {
                 if (!err && response.statusCode == 200) {
                     resolve(body);
@@ -81,21 +96,22 @@ module.exports = function (app) {
         prom.then((ripeInfo) => {
             return GetIpInfoFromDB(dec, ip, ripeInfo);
         }).then((result) => {
-            RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip, result.address);
+            RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip, dec, result.address);
         }).catch((err) => {
             console.error('get/:address ' + err);
             GetIpInfoFromDB(dec, ip, null).then((result) => {
-                RenderInfo(req, res, null, result.banner, result.ip, result.address);
+                RenderInfo(req, res, null, result.banner, result.ip, dec, result.address);
             }).catch((err) => {
                 console.log('render err: ' + err);
             });
         });
     });
 
-    function RenderInfo(req, res, ripe, banner, ip, address) {
+    function RenderInfo(req, res, ripe, banner, ip, dec, address) {
         res.render('address/info.ejs', {
             user: req.user,
             ip: ip,
+            dec: dec,
             address: address,
             inetnum: ripe != null ? ripe.objects["object"][0] : null,
             organization: ripe != null ? ripe.objects["object"][1] : null,
