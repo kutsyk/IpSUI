@@ -5,9 +5,43 @@ let request = require('request')
     , ObjectID = require('mongodb').ObjectID
     , MongoDB = require('./../../config/database.js')
     , IpHelper = require('./../helpers/IpHelper')
-    , wappalyzer = require('@wappalyzer/wappalyzer');;
+    , http = require('http')
+    , wappalyzer = require('@wappalyzer/wappalyzer');
 
 module.exports = function (app) {
+
+    let PORTS = [];
+
+    function RemoveElFromArray(array, el) {
+        for (var i = array.length - 1; i--;) {
+            if (array[i] == el) array.splice(i, 1);
+        }
+        return array;
+    }
+
+    function GetHeaders(dec) {
+        let promises = [];
+        let ip = IpHelper.DecToIp(dec);
+        let options = {method: 'HEAD', host: ip, path: '/', agent: false};
+        for (let i = 0; i < PORTS.length; i++) {
+            let port = PORTS[i];
+            options.port = port;
+            promises.push(new Promise((resolve, reject) => {
+                var httpReq = http.request(options, function (httpRes) {
+                    let result = {
+                        port: port,
+                        header: JSON.stringify(httpRes.headers)
+                    };
+                    resolve(JSON.stringify(result));
+                });
+                httpReq.on('error', function (error) {
+                    resolve('error');
+                });
+                httpReq.end();
+            }));
+        }
+        return Promise.all(promises);
+    }
 
     function GetIpInfoFromDB(dec, ip, ripeInfo) {
         let IpBanners = MongoDB.db().collection('ips_banners');
@@ -16,13 +50,24 @@ module.exports = function (app) {
                 let bannerRes = JSON.parse(JSON.stringify(doc));
                 let addressRes = {};
                 if (bannerRes != null) {
+                    bannerRes.ports = bannerRes.ports.sort(function (a, b) {
+                        return parseInt(a) - parseInt(b);
+                    });
+                    PORTS = bannerRes.ports;
                     addressRes = bannerRes.address;
-                    return {
-                        ripe: ripeInfo == null ? {} : ripeInfo,
-                        banner: bannerRes,
-                        address: addressRes,
-                        ip: ip
-                    };
+                    return GetHeaders(dec).then(values => {
+                        return values;
+                    }, reason => {
+                        return null;
+                    }).then((headers) => {
+                        return {
+                            ripe: ripeInfo == null ? {} : ripeInfo,
+                            banner: bannerRes,
+                            address: addressRes,
+                            headers: headers,
+                            ip: ip
+                        };
+                    });
                 }
                 else {
                     let freeGeoProm = new Promise((resolve, reject) => {
@@ -35,13 +80,14 @@ module.exports = function (app) {
                         })
                     });
                     return freeGeoProm.then((result) => {
+                        console.log(`res: ${result}`);
                         return {
                             ripe: ripeInfo,
                             banner: null,
                             address: result,
                             ip: ip
                         };
-                    }).catch( (err) => {
+                    }).catch((err) => {
                         console.log('freegeoIp promise: ' + err);
                         return {
                             ripe: ripeInfo,
@@ -62,7 +108,7 @@ module.exports = function (app) {
     app.get('/:dec/services', function (req, res, next) {
         let dec = req.params.dec;
         let ip = IpHelper.DecToIp(dec);
-        wappalyzer.run(['http://' + ip + '/', '--quiet'], function(result, error) {
+        wappalyzer.run(['http://' + ip + '/', '--quiet'], function (result, error) {
             if (result) {
                 res.send(result);
             }
@@ -96,18 +142,13 @@ module.exports = function (app) {
         prom.then((ripeInfo) => {
             return GetIpInfoFromDB(dec, ip, ripeInfo);
         }).then((result) => {
-            RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip, dec, result.address);
+            RenderInfo(req, res, JSON.parse(result.ripe), result.banner, result.ip, dec, result.address, result.headers);
         }).catch((err) => {
-            console.error('get/:address ' + err);
-            GetIpInfoFromDB(dec, ip, null).then((result) => {
-                RenderInfo(req, res, null, result.banner, result.ip, dec, result.address);
-            }).catch((err) => {
-                console.log('render err: ' + err);
-            });
+            console.log('render err: ' + err);
         });
     });
 
-    function RenderInfo(req, res, ripe, banner, ip, dec, address) {
+    function RenderInfo(req, res, ripe, banner, ip, dec, address, headers) {
         res.render('address/info.ejs', {
             user: req.user,
             ip: ip,
@@ -118,6 +159,7 @@ module.exports = function (app) {
             person: ripe != null ? ripe.objects["object"][2] : null,
             route: ripe != null ? ripe.objects["object"][3] : null,
             banner: banner,
+            headers: headers
         });
 
     }

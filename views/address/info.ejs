@@ -71,6 +71,7 @@
 </head>
 <body>
 <% include ../partial/header.ejs %>
+
 <div class="row">
     <div class="col-sm-6 col-md-6">
         <div class="col-sm-1 col-md-1"></div>
@@ -84,9 +85,7 @@
             </div>
             <hr>
             <% if (banner !== null && banner) { %>
-            <% var ports = banner.ports.sort(function (a, b) {
-                return parseInt(a) - parseInt(b);
-            }); %>
+            <% var ports = banner.ports; %>
             <ul class="ports-line">
                 <% for(var i = 0; i < ports.length; i++) { %>
                 <%
@@ -149,7 +148,7 @@
                     var port = ports[i]
                             , product = banner[ports[i]].product
                             , name = banner[ports[i]].name
-                            , script = banner[ports[i]].script
+                            , header = headers[i]
                             , cpe = banner[ports[i]].cpe
                             , version = banner[ports[i]].version; %>
                 <div class="row">
@@ -169,7 +168,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-9 col-sm-3 col-md-9">
+                    <div class="col-xs-9 col-sm-9 col-md-9">
                         <% if (product) { %>
                         <div class="row">
                             <b>Product:</b> <%= product %>
@@ -180,18 +179,22 @@
                             <b>Name:</b> <%= name %>
                         </div>
                         <% } %>
-                        <% if (script) { %>
-                        <% if (script["http-title"]) { %>
+                        <% if (header != 'error') { %>
                         <div class="row">
-                            <b> Title:</b> <%= decodeURIComponent(escape(script["http-title"].replace("\\n", "\n"))) %>
+                            <% header = JSON.parse(header); %>
+                            <% header = JSON.parse(header.header); %>
+                            <% for (var key in header) {
+                            if (header.hasOwnProperty(key))
+                            { %>
+                            <div class="row">
+                                <b>
+                                    <%= key %>:
+                                </b>&nbsp;
+                                <%= header[key] %>
+                            </div>
+                            <% }} %>
+
                         </div>
-                        <% } %>
-                        <% if (script["http-headers"]) { %>
-                        <div class="row">
-                            <b>Header:</b>
-                            <div class="row"><%= script["http-headers"].replace("\\n", "\n") %></div>
-                        </div>
-                        <% } %>
                         <% } %>
                         <% if (cpe) { %>
                         <div class="row">
@@ -381,7 +384,7 @@
         </div>
     </div>
 </div>
-
+<% include ../partial/footer.ejs %>
 <script src="/js/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/general/panel.js"></script>
@@ -392,10 +395,12 @@
     $(window).load(function () {
         $.getJSON("/" + <%= dec %> +"/services", function (data) {
             console.log(data);
+
             var applications = data.applications;
             var html = '';
             applications.forEach(function (application) {
-                html += '<li class="service-icon">';
+                html += '<a href="https://wappalyzer.com/applications/' + application.name + '">' +
+                    '<li class="service-icon">';
                 html += '<div class="row">';
                 html += '<img src="https://wappalyzer.com/sites/default/files/icons/';
                 html += application.icon + '" width="16px;" height="16px;"/> &nbsp;';
@@ -406,17 +411,17 @@
                     html += category;
                 });
                 html += '</div>';
-                html += '</li>';
+                html += '</li></a>';
             });
             document.getElementById("services").innerHTML = html;
         });
     });
 
-
     <%
     var lat = address ? address.latitude : 'unknown';
     var long = address ? address.longitude : 'unknown';
     %>
+
     var mymap = L.map('ipmap').setView([<%= lat %>, <%= long %>], 13);
 
     var marker = L.marker([<%= lat %>, <%= long %>]).addTo(mymap);
