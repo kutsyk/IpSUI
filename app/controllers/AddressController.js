@@ -6,7 +6,7 @@ let request = require('request')
     , MongoDB = require('./../../config/database.js')
     , IpHelper = require('./../helpers/IpHelper')
     , http = require('http')
-    , wappalyzer = require('wappalyzer');
+    , wappalyzer = require('@wappalyzer/wappalyzer');
 
 module.exports = function (app) {
 
