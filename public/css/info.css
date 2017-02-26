@@ -1,0 +1,56 @@
+.ports-line {
+    padding-left: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.port-block-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border: whitesmoke solid 0.1em;
+    width: 7em;
+    color: whitesmoke;
+}
+
+.port-block-box .row {
+    text-align: center;
+    width: 100%;
+}
+
+.port-color {
+    background-color: #009688;
+}
+
+.port-color a {
+    color: whitesmoke;
+}
+
+.product-color {
+    background-color: #424242;
+}
+
+#ipmap {
+    height: 40vh;
+    width: 100%;
+}
+
+.services {
+    list-style-type: none;
+}
+
+.service-icon {
+    float: left;
+    margin-right: 8px;
+}
+
+.service-text {
+    font-size: 0.5em;
+}
+
+ul {
+    padding-left: 0px;
+}

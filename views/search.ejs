@@ -6,13 +6,36 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        .find-block {
+
+        }
+
+        .find-block-ip-style {
+            font-size: 2em;
+        }
+    </style>
 </head>
 <body>
 <% include /partial/header.ejs %>
 <div class="container">
-<%= total %>
-    <% for (i = 0; i < hits.length; i++) {%>
+    <%= total %>
+    <hr>
+    <% for (i = 0; i < hits.length; i++) { %>
+    <% var source = hits[i]._source; %>
+    <% var ports = source.ports; %>
+    <div class="find-block">
+        <div class="row">
+            <a class="find-block-ip-style" href="address/<%= source.dec_ip %>"><%= source.ip %></a>
+            <div class="row">
+                <% for (j = 0; j < ports.length; j++) { %>
+                <a href="http://<%= source.ip %>:<%= ports[j] %>"><%= ports[j] %></a>
+                <% } %>
+            </div>
+        </div>
+        <%= hits[i] %>
         <%= JSON.stringify(hits[i]) %>
+    </div>
     <hr>
     <% } %>
 </div>

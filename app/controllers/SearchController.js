@@ -4,8 +4,7 @@ let express = require('express')
 
 module.exports = function (app) {
     let client = new elasticsearch.Client({
-        host: 'localhost:9200',
-        log: 'trace'
+        host: 'localhost:9200'
     });
 
     app.get('/search', function (req, res) {
