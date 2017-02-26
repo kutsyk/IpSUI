@@ -38,6 +38,38 @@
     </div>
     <hr>
     <% } %>
+
+    <div class="row text-left">
+        <div class="pagination">
+            <% if (pageCount > 1) { %>
+            <ul class="pagination">
+                <% if (currentPage > 1) { %>
+                <li><a href="/search?query=<%= query %>&page=1">&laquo;</a></li>
+                <% } %>
+                <% var i = 1;
+                    if (currentPage > 5) {
+                        i = +currentPage - 4;
+                    } %>
+                <% if (i !== 1) { %>
+                <li class="disabled"><a href="#">...</a></li>
+                <% } %>
+                <% for (i; i <= pageCount; i++) { %>
+                <% if (currentPage == i) { %>
+                <li class="active"><span><%= i %> <span class="sr-only">(current)</span></span></li>
+                <% } else { %>
+                <li><a href="/search?query=<%= query %>&page=<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% if (i == (+currentPage + 4)) { %>
+                <li class="disabled"><a href="#">...</a></li>
+                <% break; } %>
+                <% } %>
+                <% if (currentPage != pageCount) { %>
+                <li><a href="/search?query=<%= query %>&page=<%= pageCount %>">&raquo;</a></li>
+                <% } %>
+            </ul>
+            <% } %>
+        </div>
+    </div>
 </div>
 <% include /partial/footer.ejs %>
 </body>
