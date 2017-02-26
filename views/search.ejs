@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <style>
         .find-block {
-
         }
 
         .find-block-ip-style {
@@ -19,26 +18,46 @@
 <body>
 <% include /partial/header.ejs %>
 <div class="container">
-    <%= total %>
-    <hr>
-    <% for (i = 0; i < hits.length; i++) { %>
-    <% var source = hits[i]._source; %>
-    <% var ports = source.ports; %>
-    <div class="find-block">
-        <div class="row">
-            <a class="find-block-ip-style" href="address/<%= source.dec_ip %>"><%= source.ip %></a>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <%= total %>
+            <hr>
+            <% for (i = 0; i < hits.length; i++) { %>
+            <% var source = hits[i]._source; %>
+            <% var ports = source.ports.sort(function (a, b) {
+                return parseInt(a) - parseInt(b);
+            }); %>
             <div class="row">
-                <% for (j = 0; j < ports.length; j++) { %>
-                <a href="http://<%= source.ip %>:<%= ports[j] %>"><%= ports[j] %></a>
-                <% } %>
+                <div class="col-xs-5 col-sm-5 col-md-5">
+                    <a class="find-block-ip-style" href="address/<%= source.dec_ip %>"><%= source.ip %></a>
+                    <%= source.hostnames[0].name %>
+                    <div class="row">
+                        <% for (j = 0; j < ports.length; j++) { %>
+                        <a href="http://<%= source.ip %>:<%= ports[j] %>"><%= ports[j] %></a>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="col-xs-7 col-sm-7 col-md-7">
+                    <% for (j = 0; j < ports.length; j++) { %>
+                        <% for (var key in source[ports[j]]) { %>
+                            <% if (source[ports[j]].hasOwnProperty(key)) { %>
+                                    <% if (key == 'script') { %>
+                                        <div class="row">
+                                            <b>http-title:</b> <%= source[ports[j]][key]['http-title'] %>
+                                    <% } else { %>
+                                        <div class="row">
+                                        <b><%= key %>:</b> <%= source[ports[j]][key] %>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </div>
             </div>
+            <hr>
+            <% } %>
         </div>
-        <%= hits[i] %>
-        <%= JSON.stringify(hits[i]) %>
     </div>
-    <hr>
-    <% } %>
-
     <div class="row text-left">
         <div class="pagination">
             <% if (pageCount > 1) { %>

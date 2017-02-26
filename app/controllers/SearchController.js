@@ -13,7 +13,31 @@ module.exports = function (app) {
         let start = page * 10 - 10;
         let size = 10;
         client.search({
-            q: query
+            from: start,
+
+            // q: query
+            body: {
+                query: {
+                    term: {
+                        _all: query
+                    }
+                },
+                // sort: [{ "ports" : "asc" }]
+                // ,
+                // highlight: {
+                //     require_field_match: false,
+                //     fields: {
+                //         _all: {
+                //             "pre_tags": [
+                //                 "<b>"
+                //             ],
+                //             "post_tags": [
+                //                 "</b>"
+                //             ]
+                //         }
+                //     }
+                // }
+            }
         }).then(function (body) {
             let hits = body.hits.hits;
             let total = body.hits.total;
