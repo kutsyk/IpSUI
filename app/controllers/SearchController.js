@@ -3,16 +3,20 @@ let express = require('express')
     , mongodb = require('./../../config/database.js');
 
 module.exports = function (app) {
-    let client = new elasticsearch.Client({
-        host: 'localhost:9200'
-    });
 
     app.get('/search', function (req, res) {
+        let Elastic = new elasticsearch.Client({
+            host: 'localhost:9200'
+            // log: 'trace'
+        });
+
         let page = req.query.page ? req.query.page : 0;
         let query = req.query.query;
         let start = page * 10 - 10;
         let size = 10;
-        client.search({
+        Elastic.search({
+            index: 'ipstats',
+            type: 'banner',
             from: start,
             q: query
             // body: {
