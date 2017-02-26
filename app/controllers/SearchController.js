@@ -14,14 +14,13 @@ module.exports = function (app) {
         let size = 10;
         client.search({
             from: start,
-
-            // q: query
-            body: {
-                query: {
-                    term: {
-                        _all: query
-                    }
-                },
+            q: query
+            // body: {
+                // query: {
+                //     term: {
+                //         _all: query
+                //     }
+                // },
                 // sort: [{ "ports" : "asc" }]
                 // ,
                 // highlight: {
@@ -37,7 +36,7 @@ module.exports = function (app) {
                 //         }
                 //     }
                 // }
-            }
+            // }
         }).then(function (body) {
             let hits = body.hits.hits;
             let total = body.hits.total;
@@ -53,6 +52,14 @@ module.exports = function (app) {
             });
         }, function (error) {
             console.trace(error.message);
+            res.render('search.ejs', {
+                user: req.user,
+                query: query,
+                total: 0,
+                hits: {},
+                pageCount: 0,
+                currentPage: 0
+            });
         });
 
     });
