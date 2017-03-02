@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-<% include /partial/header.ejs  %>
+<% include /partial/header.ejs %>
 <div class="container">
     <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
@@ -24,9 +24,12 @@
             <hr>
             <% for (i = 0; i < hits.length; i++) { %>
             <% var source = hits[i]._source; %>
-            <% var ports = source.ports.sort(function (a, b) {
-                return parseInt(a) - parseInt(b);
-            }); %>
+            <% var ports = [];
+                if (source.ports) {
+                    ports = source.ports.sort(function (a, b) {
+                        return parseInt(a) - parseInt(b);
+                    });
+                } %>
             <div class="row">
                 <div class="col-xs-5 col-sm-5 col-md-5">
                     <a class="find-block-ip-style" href="address/<%= source.dec_ip %>"><%= source.ip %></a>
@@ -39,54 +42,55 @@
                 </div>
                 <div class="col-xs-7 col-sm-7 col-md-7">
                     <% for (j = 0; j < ports.length; j++) { %>
-                        <% for (var key in source[ports[j]]) { %>
-                            <% if (source[ports[j]].hasOwnProperty(key)) { %>
-                                    <% if (key == 'script') { %>
-                                        <div class="row">
-                                            <b>http-title:</b> <%= source[ports[j]][key]['http-title'] %>
-                                    <% } else { %>
-                                        <div class="row">
-                                        <b><%= key %>:</b> <%= source[ports[j]][key] %>
-                                    <% } %>
-                                </div>
+                    <% for (var key in source[ports[j]]) { %>
+                    <% if (source[ports[j]].hasOwnProperty(key)) { %>
+                    <% if (key == 'script') { %>
+                    <div class="row">
+                        <b>http-title:</b> <%= source[ports[j]][key]['http-title'] %>
+                        <% } else { %>
+                        <div class="row">
+                            <b><%= key %>:</b> <%= source[ports[j]][key] %>
                             <% } %>
+                        </div>
                         <% } %>
-                    <% } %>
+                        <% } %>
+                        <% } %>
+                    </div>
                 </div>
+                <hr>
+                <% } %>
             </div>
-            <hr>
-            <% } %>
         </div>
-    </div>
-    <div class="row text-left">
-        <div class="pagination">
-            <% if (pageCount > 1) { %>
-            <ul class="pagination">
-                <% if (currentPage > 1) { %>
-                <li><a href="/search?query=<%= query %>&page=1">&laquo;</a></li>
+        <div class="row text-left">
+            <div class="pagination">
+                <% if (pageCount > 1) { %>
+                <ul class="pagination">
+                    <% if (currentPage > 1) { %>
+                    <li><a href="/search?query=<%= query %>&page=1">&laquo;</a></li>
+                    <% } %>
+                    <% var i = 1;
+                        if (currentPage > 5) {
+                            i = +currentPage - 4;
+                        } %>
+                    <% if (i !== 1) { %>
+                    <li class="disabled"><a href="#">...</a></li>
+                    <% } %>
+                    <% for (i; i <= pageCount; i++) { %>
+                    <% if (currentPage == i) { %>
+                    <li class="active"><span><%= i %> <span class="sr-only">(current)</span></span></li>
+                    <% } else { %>
+                    <li><a href="/search?query=<%= query %>&page=<%= i %>"><%= i %></a></li>
+                    <% } %>
+                    <% if (i == (+currentPage + 4)) { %>
+                    <li class="disabled"><a href="#">...</a></li>
+                    <% break; } %>
+                    <% } %>
+                    <% if (currentPage != pageCount) { %>
+                    <li><a href="/search?query=<%= query %>&page=<%= pageCount %>">&raquo;</a></li>
+                    <% } %>
+                </ul>
                 <% } %>
-                <% var i = 1;
-                    if (currentPage > 5) {
-                        i = +currentPage - 4;
-                    } %>
-                <% if (i !== 1) { %>
-                <li class="disabled"><a href="#">...</a></li>
-                <% } %>
-                <% for (i; i <= pageCount; i++) { %>
-                <% if (currentPage == i) { %>
-                <li class="active"><span><%= i %> <span class="sr-only">(current)</span></span></li>
-                <% } else { %>
-                <li><a href="/search?query=<%= query %>&page=<%= i %>"><%= i %></a></li>
-                <% } %>
-                <% if (i == (+currentPage + 4)) { %>
-                <li class="disabled"><a href="#">...</a></li>
-                <% break; } %>
-                <% } %>
-                <% if (currentPage != pageCount) { %>
-                <li><a href="/search?query=<%= query %>&page=<%= pageCount %>">&raquo;</a></li>
-                <% } %>
-            </ul>
-            <% } %>
+            </div>
         </div>
     </div>
 </div>

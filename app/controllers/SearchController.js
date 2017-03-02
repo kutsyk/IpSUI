@@ -6,11 +6,11 @@ module.exports = function (app) {
 
     app.get('/search', function (req, res) {
         let Elastic = new elasticsearch.Client({
-            host: 'localhost:9200'
-            // log: 'trace'
+            host: 'localhost:9200',
+            log: 'trace'
         });
 
-        let page = req.query.page ? req.query.page : 0;
+        let page = req.query.page ? req.query.page : 1;
         let query = req.query.query;
         let start = page * 10 - 10;
         let size = 10;
