@@ -42,6 +42,7 @@
     "request-promise": "^4.1.1",
     "request-promise-native": "^1.0.3",
     "serve-favicon": "2.3.2",
-    "@wappalyzer/wappalyzer": "3.0.6"
+    "@wappalyzer/wappalyzer": "3.0.6",
+    "elasticsearch": "13.0.1"
   }
 }
