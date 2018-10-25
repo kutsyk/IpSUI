@@ -26,7 +26,7 @@
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.0.0",
     "ejs": "~0.8.5",
-    "express": "~4.0.0",
+    "express": "~4.15.5",
     "express-session": "~1.0.0",
     "method-override": "~1.0.0",
     "mongoose": "~4.4",
@@ -38,10 +38,10 @@
     "passport-local": "~0.1.6",
     "passport-twitter": "~1.0.2",
     "promises": "0.2.5",
-    "request": "~2.79.0",
+    "request": "~2.81.0",
     "request-promise": "^4.1.1",
     "request-promise-native": "^1.0.3",
-    "serve-favicon": "2.3.2",
+    "serve-favicon": "2.4.5",
     "@wappalyzer/wappalyzer": "3.0.6",
     "elasticsearch": "13.0.1"
   }
