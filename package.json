@@ -22,11 +22,11 @@
   "dependencies": {
     "bcrypt-nodejs": "latest",
     "bluebird": "^3.4.7",
-    "body-parser": "~1.0.0",
+    "body-parser": "~1.20.4",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.0.0",
     "ejs": "~0.8.5",
-    "express": "~4.0.0",
+    "express": "~4.22.0",
     "express-session": "~1.0.0",
     "method-override": "~1.0.0",
     "mongoose": "~4.4",
@@ -42,7 +42,7 @@
     "request-promise": "^4.1.1",
     "request-promise-native": "^1.0.3",
     "serve-favicon": "2.3.2",
-    "@wappalyzer/wappalyzer": "3.0.6",
+    "@wappalyzer/wappalyzer": "9.9.99",
     "elasticsearch": "13.0.1"
   }
 }
